@@ -1,1 +1,489 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Busby Plastering Services | Plastering, Re-skimming & Tiling</title>
+<meta name="description" content="Busby Plastering Services: plastering, dry lining, Artex removal, re-skimming, patch repairs, tiling and decorating. Free no obligation quotes, no job too small. Call Lewis on 07830 022562.">
+<meta name="theme-color" content="#0d1624">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='32' fill='%230d1624'/%3E%3Cpath d='M14 33 32 16l18 17' fill='none' stroke='%23f28c1b' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M21 31v16h22V31' fill='none' stroke='%23fff' stroke-width='4' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Instrument+Sans:wght@400..700&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add('js')</script>
+<style>
+  :root{
+    --ink:#0d1624;
+    --ink-2:#15233a;
+    --plaster:#f1eeeb;
+    --plaster-hi:#fbf9f7;
+    --orange:#f28c1b;
+    --brick:#a4472f;
+    --rough:#6a5148;
+    --ease:cubic-bezier(.7,0,.2,1);
+    --display:"Bricolage Grotesque","Helvetica Neue",Arial,sans-serif;
+    --body:"Instrument Sans","Helvetica Neue",Arial,sans-serif;
 
+    /* Coarse, lit, bumpy surface – used for the rough wall, backing coat and textured ceiling */
+    --tex-rough:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='600'%3E%3Cfilter id='f' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.045' numOctaves='5' seed='7' stitchTiles='stitch' result='n'/%3E%3CfeDiffuseLighting in='n' surfaceScale='7' diffuseConstant='1.15' lighting-color='%23ffffff'%3E%3CfeDistantLight azimuth='225' elevation='52'/%3E%3C/feDiffuseLighting%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23f)'/%3E%3C/svg%3E");
+    /* Very soft, almost flat – freshly skimmed plaster */
+    --tex-smooth:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='800'%3E%3Cfilter id='f' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.006' numOctaves='2' seed='3' stitchTiles='stitch' result='n'/%3E%3CfeDiffuseLighting in='n' surfaceScale='1.6' diffuseConstant='1' lighting-color='%23ffffff'%3E%3CfeDistantLight azimuth='225' elevation='60'/%3E%3C/feDiffuseLighting%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23f)'/%3E%3C/svg%3E");
+    --tex-brick:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='52'%3E%3Crect width='60' height='52' fill='%23a4472f'/%3E%3Cpath d='M0 0h60M0 26h60M0 52h60M30 0v26M0 26v26M60 26v26' stroke='%23d6c4b6' stroke-width='3' fill='none'/%3E%3C/svg%3E");
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;scroll-padding-top:76px}
+  body{font-family:var(--body);font-size:1.0625rem;line-height:1.6;color:var(--ink);background:var(--plaster);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+  h1,h2,h3{font-family:var(--display);line-height:1;letter-spacing:-.035em}
+  :focus-visible{outline:3px solid var(--orange);outline-offset:3px}
+  .wrap{max-width:1240px;margin:0 auto;padding:0 clamp(22px,5vw,48px)}
+
+  /* ---------- NAV ---------- */
+  .nav-bar{position:sticky;top:0;z-index:100;background:var(--ink);color:#fff;height:68px}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:100%}
+  .brand{display:flex;align-items:center;gap:12px;font-family:var(--display);font-weight:700;font-size:1.15rem;letter-spacing:-.02em}
+  .brand svg{width:38px;height:38px}
+  .nav ul{display:flex;align-items:center;gap:30px;list-style:none}
+  .nav ul a.l{font-size:.95rem;color:#c5cfdd;transition:color .2s}
+  .nav ul a.l:hover{color:var(--orange)}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;
+    font:600 1rem/1 var(--body);padding:16px 26px;border-radius:999px;
+    background:var(--orange);color:var(--ink);border:2px solid var(--orange);cursor:pointer;
+    transition:transform .25s var(--ease),background .2s,color .2s,border-color .2s;
+  }
+  .btn:hover{transform:translateY(-3px)}
+  .btn.line{background:transparent;color:inherit;border-color:currentColor}
+  .btn.line:hover{background:currentColor}
+  .btn.line:hover span{color:var(--hover-ink,#fff)}
+  .btn.small{padding:11px 20px;font-size:.92rem}
+  .menu-btn{display:none;background:none;border:0;color:#fff;font-size:1.6rem;cursor:pointer;padding:8px}
+
+  /* ---------- HERO : the wall gets skimmed ---------- */
+  .hero{position:relative;height:calc(100svh - 68px);min-height:620px;overflow:hidden;background:var(--rough)}
+  .layer{position:absolute;inset:0}
+  .rough{
+    background-color:var(--rough);background-image:var(--tex-rough);background-blend-mode:multiply;background-size:600px;
+    color:#fff;--hover-ink:var(--ink);
+  }
+  .rough::after{content:"";position:absolute;inset:0;background:radial-gradient(120% 90% at 30% 70%,transparent 40%,rgba(0,0,0,.45));pointer-events:none}
+  .cracks{position:absolute;inset:0;width:100%;height:100%}
+  .ridge{position:absolute;inset:0;background:linear-gradient(90deg,#d9c7bd,#a8948a);pointer-events:none}
+  .smooth{
+    background-color:var(--plaster-hi);background-image:var(--tex-smooth);background-blend-mode:multiply;background-size:800px;
+    color:var(--ink);--hover-ink:#fff;
+  }
+  .js .smooth{clip-path:inset(0 100% 0 0)}
+  .js .ridge{clip-path:inset(0 100% 0 0)}
+  .hero-pad{
+    position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;
+    padding:0 clamp(22px,5vw,72px) clamp(40px,9vh,96px);z-index:2;
+  }
+  .hero h1{font-weight:800;font-size:clamp(3rem,9.2vw,8.6rem);line-height:.9;letter-spacing:-.05em}
+  .hero h1 span{display:block}
+  .hero p{margin-top:28px;max-width:34rem;font-size:clamp(1.05rem,1.6vw,1.25rem);line-height:1.5}
+  .hero .cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:32px}
+  .replay{
+    position:absolute;right:clamp(22px,5vw,72px);bottom:clamp(40px,9vh,96px);z-index:3;
+    background:none;border:0;font:600 .95rem var(--body);color:var(--ink);cursor:pointer;
+    padding:10px 0;border-bottom:2px solid var(--orange);opacity:0;pointer-events:none;transition:opacity .4s .2s;
+  }
+  .hero.done .replay{opacity:1;pointer-events:auto}
+  .trowel{position:absolute;top:52%;left:0;z-index:5;pointer-events:none;width:0;height:0;transition:opacity .35s}
+  .trowel svg{position:absolute;width:230px;left:-115px;top:-60px;transform:rotate(-90deg);filter:drop-shadow(0 10px 18px rgba(0,0,0,.35))}
+  .trowel .sway{animation:sway .5s ease-in-out infinite alternate;transform-origin:50% 60%}
+  @keyframes sway{from{transform:rotate(-3deg)}to{transform:rotate(3deg)}}
+  .hero.done .trowel,.trowel.hide{opacity:0}
+
+  /* ---------- SERVICES ---------- */
+  .section{padding:clamp(72px,11vw,150px) 0}
+  h2{font-size:clamp(2.2rem,5.4vw,4.4rem);font-weight:700}
+  .intro{margin-top:20px;max-width:36rem;font-size:1.15rem;color:#4b586a}
+  .svc-list{list-style:none;margin-top:clamp(40px,6vw,72px);border-bottom:1.5px solid rgba(13,22,36,.2)}
+  .svc a{
+    position:relative;display:grid;grid-template-columns:1.1fr 1fr;gap:12px 40px;align-items:baseline;
+    padding:clamp(22px,3vw,34px) 0;border-top:1.5px solid rgba(13,22,36,.2);overflow:hidden;
+  }
+  .svc a::before{
+    content:"";position:absolute;inset:0 -100vw;background:var(--orange);
+    transform:scaleX(0);transform-origin:left;transition:transform .55s var(--ease);
+  }
+  .svc a:hover::before,.svc a:focus-visible::before{transform:scaleX(1)}
+  .svc h3,.svc p{position:relative;transition:transform .55s var(--ease)}
+  .svc h3{font-size:clamp(1.6rem,3.6vw,2.8rem);font-weight:600}
+  .svc p{color:#4b586a;max-width:26rem}
+  .svc a:hover p,.svc a:focus-visible p{color:var(--ink)}
+  .svc a:hover h3,.svc a:hover p,.svc a:focus-visible h3,.svc a:focus-visible p{transform:translateX(18px)}
+
+  /* ---------- BEFORE / AFTER ---------- */
+  .diff{background:var(--ink);color:#fff}
+  .diff .intro{color:#aab6c6}
+  .diff .intro a{color:var(--orange);border-bottom:1px solid currentColor}
+  .ba{
+    --pos:50;position:relative;margin-top:clamp(36px,5vw,60px);height:clamp(300px,52vw,560px);
+    border-radius:20px;overflow:hidden;user-select:none;touch-action:pan-y;
+  }
+  /* To use real photos instead: set  background-image:url(before.jpg)  and  url(after.jpg)  on .ba-before / .ba-after
+     and remove background-blend-mode / background-color. */
+  .ba-after,.ba-before{position:absolute;inset:0}
+  .ba-after{background-color:var(--plaster-hi);background-image:var(--tex-smooth);background-blend-mode:multiply;background-size:800px}
+  .ba-before{
+    background-color:#cbbdb2;background-image:
+      radial-gradient(circle at 50% 0,transparent 0 56%,rgba(60,40,30,.28) 58% 63%,transparent 65%),
+      radial-gradient(circle at 50% 0,transparent 0 56%,rgba(60,40,30,.28) 58% 63%,transparent 65%),
+      var(--tex-rough);
+    background-size:52px 26px,52px 26px,600px;background-position:0 0,26px 13px,0 0;background-blend-mode:normal,normal,multiply;
+    clip-path:inset(0 calc(100% - var(--pos) * 1%) 0 0);
+  }
+  .rose{
+    position:absolute;left:50%;top:32%;width:clamp(70px,10vw,120px);aspect-ratio:1;border-radius:50%;transform:translate(-50%,-50%);
+    background:radial-gradient(circle,#fff 0 34%,#e6e1dc 36% 62%,#f7f5f2 64%);
+    box-shadow:0 14px 40px rgba(20,12,8,.35),inset 0 -4px 8px rgba(0,0,0,.12);
+  }
+  .tag{
+    position:absolute;top:20px;padding:9px 16px;border-radius:999px;font:600 .9rem var(--body);background:var(--ink);color:#fff;z-index:2;
+  }
+  .tag.b{left:20px}.tag.a{right:20px;background:var(--orange);color:var(--ink)}
+  .handle{
+    position:absolute;top:0;bottom:0;left:calc(var(--pos) * 1%);width:3px;margin-left:-1.5px;background:#fff;z-index:3;pointer-events:none;
+    box-shadow:0 0 0 1px rgba(0,0,0,.15);
+  }
+  .handle i{
+    position:absolute;top:50%;left:50%;width:58px;height:58px;margin:-29px;border-radius:50%;background:var(--orange);color:var(--ink);
+    display:grid;place-items:center;font-style:normal;font-weight:800;font-size:1.2rem;box-shadow:0 8px 28px rgba(0,0,0,.4);
+    transition:transform .25s var(--ease);
+  }
+  .ba:hover .handle i{transform:scale(1.12)}
+  .ba input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;z-index:4;margin:0}
+  .ba:has(input:focus-visible){outline:3px solid var(--orange);outline-offset:4px}
+
+  /* ---------- BUILD-UP ---------- */
+  .build-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(36px,6vw,90px);margin-top:clamp(40px,6vw,72px);align-items:center}
+  .cross{display:flex;height:clamp(280px,40vw,420px);border-radius:12px;overflow:hidden;box-shadow:0 0 0 1.5px rgba(13,22,36,.2)}
+  .cross .s{position:relative;flex:0 0 0;transition:flex-basis 1s var(--ease);overflow:hidden}
+  .cross.in .s{flex-basis:var(--w)}
+  .cross .s:nth-child(2){transition-delay:.55s}.cross .s:nth-child(3){transition-delay:1.1s}.cross .s:nth-child(4){transition-delay:1.65s}
+  .s1{--w:44%;background:var(--tex-brick)}
+  .s2{--w:30%;background-color:#d7aea0;background-image:var(--tex-rough);background-blend-mode:multiply;background-size:300px}
+  .s3{--w:14%;background:var(--plaster-hi)}
+  .s4{--w:12%;background:var(--orange)}
+  .s b{
+    position:absolute;top:14px;left:50%;transform:translateX(-50%);width:30px;height:30px;border-radius:50%;
+    background:var(--ink);color:#fff;font:700 .85rem/30px var(--display);text-align:center;
+  }
+  .layers{list-style:none;display:grid;gap:26px}
+  .layers li{display:grid;grid-template-columns:42px 1fr;gap:16px}
+  .layers b{width:34px;height:34px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font:700 .95rem var(--display)}
+  .layers h3{font-size:1.45rem;font-weight:600;margin-bottom:4px;letter-spacing:-.02em}
+  .layers p{color:#4b586a}
+
+  /* ---------- CONTACT ---------- */
+  .contact{background:var(--ink);color:#fff;position:relative;overflow:hidden}
+  .contact h2{max-width:14ch}
+  .bignum{
+    display:inline-block;margin-top:clamp(28px,4vw,48px);font-family:var(--display);font-weight:800;
+    font-size:clamp(2.7rem,10.5vw,9rem);line-height:.95;letter-spacing:-.05em;color:#fff;
+    background:linear-gradient(var(--orange),var(--orange)) 0 100%/0 .09em no-repeat;transition:background-size .6s var(--ease),color .3s;
+  }
+  .bignum:hover{background-size:100% .09em;color:var(--orange)}
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,6vw,90px);margin-top:clamp(40px,6vw,80px)}
+  .links{display:grid;gap:0;align-content:start}
+  .links a{display:flex;justify-content:space-between;gap:20px;padding:22px 0;border-top:1px solid rgba(255,255,255,.18);font-size:1.15rem;transition:color .2s,padding .3s var(--ease)}
+  .links a:last-child{border-bottom:1px solid rgba(255,255,255,.18)}
+  .links a:hover{color:var(--orange);padding-left:12px}
+  .links small{color:#8fa0b6;font-size:.95rem;flex:none}
+  .links span{word-break:break-word;text-align:right}
+  form{display:grid;gap:18px}
+  label{display:grid;gap:6px;font-size:.9rem;color:#aab6c6}
+  input[type=text],input[type=tel],textarea{
+    width:100%;font:inherit;font-size:1.05rem;color:#fff;background:transparent;border:0;border-bottom:1.5px solid rgba(255,255,255,.3);
+    padding:10px 0;border-radius:0;transition:border-color .2s;
+  }
+  textarea{min-height:110px;resize:vertical}
+  input:focus,textarea:focus{outline:none;border-color:var(--orange)}
+  .note{font-size:.85rem;color:#8fa0b6}
+
+  footer{background:#08101b;color:#8fa0b6;padding:28px 0;font-size:.92rem}
+  footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+  footer a:hover{color:var(--orange)}
+  .callbar{display:none}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:860px){
+    .menu-btn{display:block}
+    .nav ul{position:absolute;top:68px;left:0;right:0;background:var(--ink);flex-direction:column;align-items:flex-start;padding:10px clamp(22px,5vw,48px) 26px;gap:18px;display:none;border-top:1px solid rgba(255,255,255,.1)}
+    .nav ul.open{display:flex}
+    .svc a{grid-template-columns:1fr}
+    .build-grid,.contact-grid{grid-template-columns:1fr}
+    .callbar{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:90;background:var(--orange);color:var(--ink);font-weight:700;justify-content:center;padding:16px;box-shadow:0 -8px 24px rgba(0,0,0,.25)}
+    body{padding-bottom:54px}
+    .replay{display:none}
+    .trowel svg{width:170px;left:-85px;top:-44px}
+  }
+
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    .js .smooth,.js .ridge{clip-path:none}
+    .trowel,.replay{display:none}
+    .cross .s{transition:none;flex-basis:var(--w)}
+    *{transition-duration:.01ms!important;animation:none!important}
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== NAV ===== -->
+<div class="nav-bar">
+  <div class="wrap nav">
+    <a class="brand" href="#top" aria-label="Busby Plastering Services, home">
+      <!-- Swap this <svg> for your real logo: <img src="logo.png" alt="" width="38" height="38" style="border-radius:50%"> -->
+      <svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="31" fill="#15233a" stroke="#f28c1b" stroke-width="2"/><path d="M14 33 32 16l18 17" fill="none" stroke="#f28c1b" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M21 31v16h22V31" fill="none" stroke="#fff" stroke-width="3.5" stroke-linejoin="round"/><rect x="28" y="36" width="8" height="11" rx="1" fill="#f28c1b"/></svg>
+      Busby Plastering
+    </a>
+    <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">☰</button>
+    <ul id="menu">
+      <li><a class="l" href="#services">Services</a></li>
+      <li><a class="l" href="#difference">The difference</a></li>
+      <li><a class="l" href="#process">Process</a></li>
+      <li><a class="l" href="#contact">Contact</a></li>
+      <li><a class="btn small" href="tel:07830022562">07830 022562</a></li>
+    </ul>
+  </div>
+</div>
+
+<main id="top">
+
+  <!-- ===== HERO ===== -->
+  <header class="hero" id="hero">
+    <div class="layer rough" id="rough" aria-hidden="true">
+      <svg class="cracks" viewBox="0 0 1000 600" preserveAspectRatio="xMidYMid slice">
+        <defs>
+          <pattern id="brk" width="60" height="52" patternUnits="userSpaceOnUse">
+            <rect width="60" height="52" fill="#a4472f"/>
+            <path d="M0 0h60M0 26h60M0 52h60M30 0v26M0 26v26M60 26v26" stroke="#d6c4b6" stroke-width="3" fill="none"/>
+          </pattern>
+        </defs>
+        <polygon points="640,0 1000,0 1000,190 930,170 905,215 850,185 800,225 760,150 700,160 690,70" fill="url(#brk)"/>
+        <polygon points="640,0 1000,0 1000,190 930,170 905,215 850,185 800,225 760,150 700,160 690,70" fill="none" stroke="#2a1812" stroke-width="3" opacity=".55"/>
+        <g fill="none" stroke="#1b110d" stroke-linecap="round" stroke-linejoin="round" opacity=".8">
+          <path d="M800 225 L790 290 L822 340 L800 410 L842 480 L826 600" stroke-width="3"/>
+          <path d="M822 340 L880 372 L905 440" stroke-width="2"/>
+          <path d="M790 290 L735 318 L720 370" stroke-width="2"/>
+          <path d="M842 480 L910 505" stroke-width="1.6"/>
+          <path d="M300 0 L318 70 L286 135 L310 200" stroke-width="2"/>
+          <path d="M600 600 L585 540 L615 490" stroke-width="1.6"/>
+        </g>
+        <g fill="none" stroke="#fff" stroke-linecap="round" opacity=".16" transform="translate(3 2)">
+          <path d="M800 225 L790 290 L822 340 L800 410 L842 480 L826 600" stroke-width="1.5"/>
+        </g>
+      </svg>
+    </div>
+    <div class="ridge" id="ridge" aria-hidden="true"></div>
+    <div class="layer smooth" id="smooth">
+      <div class="hero-pad" id="copy">
+        <h1><span>Rough walls in.</span><span>Smooth walls out.</span></h1>
+        <p>Plastering, re-skimming, tiling and repairs from Lewis Busby. Free no obligation quotes, and no job is too small.</p>
+        <div class="cta">
+          <a class="btn" href="#contact">Get a free quote</a>
+          <a class="btn line" href="tel:07830022562"><span>Call 07830 022562</span></a>
+        </div>
+      </div>
+      <button class="replay" id="replay" type="button">Skim it again</button>
+    </div>
+    <div class="trowel" id="trowel" aria-hidden="true">
+      <svg viewBox="0 0 140 70"><g class="sway"><rect x="6" y="46" width="128" height="7" rx="3.5" fill="#d5dce6"/><rect x="6" y="46" width="128" height="2.5" rx="1.2" fill="#fff" opacity=".7"/><path d="M58 46v-9h24v9z" fill="#8c98a8"/><rect x="38" y="16" width="64" height="22" rx="11" fill="#f28c1b"/><rect x="48" y="21" width="44" height="3" rx="1.5" fill="#fff" opacity=".4"/></g></svg>
+    </div>
+  </header>
+
+  <!-- ===== SERVICES ===== -->
+  <section class="section" id="services">
+    <div class="wrap">
+      <h2>Walls, ceilings, floors and fixes.</h2>
+      <p class="intro">Everything from a small patch after a leak to a whole house re-skim. Tap any job for a free quote.</p>
+      <ul class="svc-list">
+        <li class="svc"><a href="#contact"><h3>Plasterboarding</h3><p>Boarding and dry lining, ready for a smooth skim.</p></a></li>
+        <li class="svc"><a href="#contact"><h3>Artex removal and re-skimming</h3><p>Textured ceilings and walls, made flat and modern.</p></a></li>
+        <li class="svc"><a href="#contact"><h3>Re-skimming walls and ceilings</h3><p>Tired, bumpy or cracked surfaces back to a clean, paint-ready finish.</p></a></li>
+        <li class="svc"><a href="#contact"><h3>Patchwork repair</h3><p>Cracks, holes and damp or leak damage blended out of sight.</p></a></li>
+        <li class="svc"><a href="#contact"><h3>Bathroom and kitchen tiling</h3><p>Straight lines, even grout and neat edges.</p></a></li>
+        <li class="svc"><a href="#contact"><h3>Decorating</h3><p>Prepped and painted, so the room is finished from start to end.</p></a></li>
+        <li class="svc"><a href="#contact"><h3>General DIY and repairs</h3><p>Wood flooring, maintenance and project management.</p></a></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ===== BEFORE / AFTER ===== -->
+  <section class="section diff" id="difference">
+    <div class="wrap">
+      <h2>Artex off. Smooth on.</h2>
+      <p class="intro">Drag across the ceiling to see the difference. This is an illustration; see real jobs on the <a href="https://www.facebook.com/Busby-Plastering-Services" target="_blank" rel="noopener">Facebook page</a>.</p>
+      <div class="ba" id="ba">
+        <div class="ba-after"><div class="rose"></div></div>
+        <div class="ba-before"><div class="rose"></div></div>
+        <span class="tag b">Before</span><span class="tag a">After</span>
+        <div class="handle"><i>↔</i></div>
+        <input type="range" min="0" max="100" value="50" aria-label="Compare textured ceiling before and smooth ceiling after">
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PROCESS ===== -->
+  <section class="section" id="process">
+    <div class="wrap">
+      <h2>How a wall is finished.</h2>
+      <p class="intro">A cross-section, from the bare wall out to the paint. Skipping any layer shows up later.</p>
+      <div class="build-grid">
+        <div class="cross" id="cross" role="img" aria-label="Cross-section of a finished wall: brick, backing coat, skim coat, paint">
+          <div class="s s1"><b>1</b></div>
+          <div class="s s2"><b>2</b></div>
+          <div class="s s3"><b>3</b></div>
+          <div class="s s4"><b>4</b></div>
+        </div>
+        <ol class="layers">
+          <li><b>1</b><div><h3>The base</h3><p>Brick or plasterboard. Anything loose, damp or damaged gets sorted first.</p></div></li>
+          <li><b>2</b><div><h3>Prep and backing</h3><p>Bonding agent, beads on the corners and a backing coat to level the surface.</p></div></li>
+          <li><b>3</b><div><h3>The skim</h3><p>A few millimetres of finishing plaster, trowelled flat and polished.</p></div></li>
+          <li><b>4</b><div><h3>Decorate</h3><p>A mist coat, then paint. Ready to live with.</p></div></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT ===== -->
+  <section class="section contact" id="contact">
+    <div class="wrap">
+      <h2>Free quote. No obligation.</h2>
+      <a class="bignum" href="tel:07830022562">07830 022562</a>
+      <div class="contact-grid">
+        <div class="links">
+          <a href="mailto:busbyplasteringservices@outlook.com"><small>Email</small><span>busbyplasteringservices@outlook.com</span></a>
+          <a href="https://www.facebook.com/Busby-Plastering-Services" target="_blank" rel="noopener"><small>Facebook</small><span>Busby Plastering Services</span></a>
+        </div>
+        <form id="quoteForm">
+          <label>Your name<input type="text" id="name" required autocomplete="name"></label>
+          <label>Phone number<input type="tel" id="phone" autocomplete="tel"></label>
+          <label>What needs doing?<textarea id="msg" required></textarea></label>
+          <button class="btn" type="submit">Send enquiry</button>
+          <p class="note">This opens your email app with your details filled in, ready to send.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© <span id="yr"></span> Busby Plastering Services</span>
+    <span><a href="tel:07830022562">07830 022562</a> &nbsp;/&nbsp; <a href="mailto:busbyplasteringservices@outlook.com">Email</a> &nbsp;/&nbsp; <a href="https://www.facebook.com/Busby-Plastering-Services" target="_blank" rel="noopener">Facebook</a></span>
+  </div>
+</footer>
+<a class="callbar" href="tel:07830022562">Call Lewis: 07830 022562</a>
+
+<script>
+(function(){
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  /* mobile menu */
+  const menu = document.getElementById('menu'), mb = document.getElementById('menuBtn');
+  mb.addEventListener('click', () => { const o = menu.classList.toggle('open'); mb.setAttribute('aria-expanded', o); });
+  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { menu.classList.remove('open'); mb.setAttribute('aria-expanded', false); }));
+
+  /* ---------- HERO: trowel skims the wall ---------- */
+  const hero = document.getElementById('hero'),
+        rough = document.getElementById('rough'),
+        smooth = document.getElementById('smooth'),
+        ridge = document.getElementById('ridge'),
+        trowel = document.getElementById('trowel'),
+        copy = document.getElementById('copy');
+
+  // Rough layer shows the same copy in white until the trowel passes
+  const clone = copy.cloneNode(true);
+  clone.removeAttribute('id');
+  clone.setAttribute('inert', '');
+  rough.appendChild(clone);
+
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const ease = t => t < .5 ? 4*t*t*t : 1 - Math.pow(-2*t + 2, 3) / 2;
+
+  function poly(x, phase, off){
+    const n = 14, slant = 7, pts = ['0% 0%'];
+    for(let i = 0; i <= n; i++){
+      const y = i / n * 100;
+      const wob = Math.sin(i * 1.15 + phase) * 1.1 + Math.sin(i * .5 + phase * 1.7) * .8;
+      pts.push((x - slant * (y / 100) + wob + off).toFixed(2) + '% ' + y.toFixed(1) + '%');
+    }
+    pts.push('0% 100%');
+    return 'polygon(' + pts.join(',') + ')';
+  }
+  function setX(x, ph){
+    smooth.style.clipPath = poly(x, ph, 0);
+    ridge.style.clipPath  = poly(x, ph, 1.6);
+    trowel.style.left = (x - 3.5) + '%';
+  }
+  function finish(){
+    smooth.style.clipPath = 'none';
+    ridge.style.clipPath = 'inset(0 100% 0 0)';
+    hero.classList.add('done');
+  }
+  let raf;
+  function play(){
+    cancelAnimationFrame(raf);
+    hero.classList.remove('done');
+    trowel.classList.remove('hide');
+    const dur = 2800, delay = 500, from = -10, to = 112;
+    let t0 = null;
+    setX(from, 0);
+    function step(ts){
+      if(t0 === null) t0 = ts;
+      const raw = (ts - t0 - delay) / dur;
+      if(raw < 0){ raf = requestAnimationFrame(step); return; }
+      if(raw >= 1){ setX(to, 0); finish(); return; }
+      setX(from + (to - from) * ease(raw), (ts - t0) / 260);
+      raf = requestAnimationFrame(step);
+    }
+    raf = requestAnimationFrame(step);
+  }
+  if(reduce){ finish(); } else { play(); }
+  document.getElementById('replay').addEventListener('click', play);
+
+  /* ---------- Before / after slider ---------- */
+  const ba = document.getElementById('ba'), range = ba.querySelector('input');
+  const setPos = v => ba.style.setProperty('--pos', v);
+  range.addEventListener('input', () => setPos(range.value));
+  // gentle hint the first time it scrolls into view
+  if(!reduce){
+    const hintIO = new IntersectionObserver(es => {
+      if(!es[0].isIntersecting) return;
+      hintIO.disconnect();
+      const t0 = performance.now();
+      (function hint(now){
+        const t = Math.min((now - t0) / 1600, 1);
+        const v = 50 + Math.sin(t * Math.PI * 2) * 24 * (1 - t * .3);
+        if(document.activeElement !== range && range.value == 50){ setPos(v); }
+        if(t < 1) requestAnimationFrame(hint); else setPos(range.value);
+      })(t0);
+    }, { threshold: .6 });
+    hintIO.observe(ba);
+  }
+
+  /* ---------- Wall cross-section builds up once ---------- */
+  const cross = document.getElementById('cross');
+  const crossIO = new IntersectionObserver(es => {
+    if(es[0].isIntersecting){ cross.classList.add('in'); crossIO.disconnect(); }
+  }, { threshold: .4 });
+  crossIO.observe(cross);
+
+  /* ---------- Enquiry form (opens email app) ---------- */
+  document.getElementById('quoteForm').addEventListener('submit', e => {
+    e.preventDefault();
+    const n = document.getElementById('name').value,
+          p = document.getElementById('phone').value,
+          m = document.getElementById('msg').value;
+    location.href = 'mailto:busbyplasteringservices@outlook.com?subject=' +
+      encodeURIComponent('Quote enquiry from ' + n) +
+      '&body=' + encodeURIComponent('Name: ' + n + '\nPhone: ' + p + '\n\n' + m);
+  });
+})();
+</script>
+</body>
+</html>
